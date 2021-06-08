@@ -1,0 +1,66 @@
+project:
+  root_path: ''
+  host_type: local
+  host_name: ''
+  project_name: 'flask_web_application'
+  tmp_path: ''
+  cloud: 'aliyun'
+  project_id: ''
+  temp_data_root: 'D:\project\flask_web_application\temp_data\'
+  avatar_default_url: 'user\avatar\default.jpg'
+  avatar_path: 'user\avatar\'
+  avatar_width: 300
+  avatar_height: 300
+  thumbnail_width: 100
+  thumbnail_height: 100
+
+APP:
+  DEBUG: true
+  PORT: 8888
+  HOST: 0.0.0.0
+  SECRET_KEY: 'ThisIsMySecretKey'
+
+app:
+  debug: 1
+  port: 8888
+  host: 0.0.0.0
+  secret_key: '000000'
+  cipher: 0
+  cipher_key: ''
+  cipher_iv: ''
+
+mongodb:
+  host: 'mongodb://zzs:159357@192.168.100.197:27017/flask_demo?authSource=admin'
+
+REDIS:
+  REDIS_URL: 'redis://:159357@192.168.100.197:6379/0'
+  ROLE_EX: 86400
+
+api:
+  # 项目主要接口
+  api_toggle: true
+  # 项目内部接口
+  internal_api_toggle: false
+  # 项目第三方接口
+  tp_api_toggle: false
+
+logger:
+  log_dir: './logs'
+  log_filename: 'default.log'
+  format: '%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s'
+
+limiter:
+  api_white_list: ~
+  allow_host_domains: ~
+  default_limits:
+    - '6000 per hour'
+    - '600 per minute'
+
+EXCEL_FILE:
+  FILE_FOLDER: '/var/execl_file'
+  TEMP_FILE_FOLDER: '/var/temp_execl_file'
+
+ROLE:
+  SUPER_ADMIN: 2
+  NORMAL_ADMIN: 1
+  USER: 0

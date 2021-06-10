@@ -32,10 +32,10 @@ class SignUp(Resource):
 
         args = SignUp.post_request_parser.parse_args()
 
-        ok, status_code, msg = logic_sign_up(args)  # pylint: disable=C0103
+        ok, status_code, data = logic_sign_up(args)  # pylint: disable=C0103
         if not ok:
-            abort(status_code, msg)
-        return msg, status_code
+            abort(status_code, data)
+        return data, status_code
 
 
 @ns.route('/login/')
@@ -51,10 +51,10 @@ class Login(Resource):
 
         args = Login.post_request_parser.parse_args()
 
-        ok, status_code, msg = logic_login_in(args)  # pylint: disable=C0103
+        ok, status_code, data = logic_login_in(args)  # pylint: disable=C0103
         if not ok:
-            abort(status_code, msg)
-        return msg, status_code
+            abort(status_code, data)
+        return data, status_code
 
 
 @ns.route('/logout/')
@@ -82,10 +82,10 @@ class UserAvatar(Resource):
         """上传头像"""
         args = UserAvatar.post_request_parser.parse_args()
         user = current_user
-        ok, status_code, msg = logic_upload_avatar(user, args)
+        ok, status_code, data = logic_upload_avatar(user, args)
         if not ok:
-            abort(status_code, msg)
-        return msg, status_code
+            abort(status_code, data)
+        return data, status_code
 
 
 @ns.route('/users/')
@@ -102,12 +102,12 @@ class Users(Resource):
     def get(self):
         """获取用户个人信息"""
         args = Users.get_request_parser.parse_args()
-        ok, status_code, msg = logic_query_users(args)
+        ok, status_code, data = logic_query_users(args)
 
         if not ok:
-            abort(status_code, msg)
+            abort(status_code, data)
 
-        return msg
+        return data
 
     @login_required
     @ns.expect(put_request_parser, validate=True)
@@ -115,11 +115,11 @@ class Users(Resource):
     def put(self):
         """修改某个用户信息"""
         args = self.put_request_parser.parse_args()
-        ok, status_code, msg = logic_update_user_info(args)
+        ok, status_code, data = logic_update_user_info(args)
         if not ok:
-            abort(status_code, msg)
+            abort(status_code, data)
 
-        return msg
+        return data
 
     @login_required
     @auth(ADD_USER)
@@ -128,9 +128,9 @@ class Users(Resource):
     def post(self):
         """创建用户"""
         args = self.post_request_parser.parse_args()
-        ok, status_code, msg = logic_create_user(args)
+        ok, status_code, data = logic_create_user(args)
 
         if not ok:
-            abort(status_code, msg)
+            abort(status_code, data)
 
-        return msg, status_code
+        return data, status_code

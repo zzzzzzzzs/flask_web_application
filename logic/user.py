@@ -44,6 +44,10 @@ def logic_sign_up(args):
         return False, 400, make_response_data(**UserStatusCode.EXISTED_ERROR, message="该号码已存在")
     except ValueError as e:
         return False, 400, make_response_data(**UserStatusCode.PASSWORD_ERROR, message=str(e))
+    except ValidationError as e:
+        fields = ','.join([k for k in e.errors.keys()])
+        message = "参数：{} 格式错误".format(fields)
+        return False, 401, make_response_data(code=UserStatusCode.INVALID_ARGS['code'], message=message)
     except Exception as e:  # pylint: disable=C0103
         log.logger.error(repr(e))
         return False, 500, make_response_data(**BasicStatusCode.SERVER_ERROR)

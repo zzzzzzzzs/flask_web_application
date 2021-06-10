@@ -3,6 +3,7 @@
 """
 from flask import Flask
 from flask_mongoengine import MongoEngineSessionInterface
+from flask_debugtoolbar import DebugToolbarExtension
 from configs import config_obj
 from api import api, login_manager
 from model import mongo_db, redis_db
@@ -34,11 +35,25 @@ redis_db.init_app(app)
 # -------------------------Init Login Manager-----------------------
 login_manager.init_app(app)
 
+# -------------------------Init File Folder-----------------------
+# todo: 初始化必要的文件夹
+
+
+# -------------------------Init File Folder-----------------------
+app.config['DEBUG_TB_PROFILER_ENABLED'] = True
+toolbar = DebugToolbarExtension()
+toolbar.init_app(app)
+
 
 # -------------------------custom errorhandler --------------------
 @app.errorhandler(400)
 def handle_400(e):
     return e.description, 400
+
+
+@app.errorhandler(401)
+def handle_401(e):
+    return e.description, 401
 
 
 @app.errorhandler(403)

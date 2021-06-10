@@ -16,7 +16,7 @@ ROLE_TYPE = (
 )
 
 
-class User(UserMixin, mongo_db.DynamicDocument):
+class User(mongo_db.DynamicDocument, UserMixin):
     """
     用户模型
     """

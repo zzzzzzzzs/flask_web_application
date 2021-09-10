@@ -1,6 +1,7 @@
 """
 项目应用各个模块的初始化
 """
+import os
 from flask import Flask
 from flask_mongoengine import MongoEngineSessionInterface
 from flask_debugtoolbar import DebugToolbarExtension
@@ -36,10 +37,16 @@ redis_db.init_app(app)
 login_manager.init_app(app)
 
 # -------------------------Init File Folder-----------------------
-# todo: 初始化必要的文件夹
+os.makedirs(config_obj['logger']['log_dir'], exist_ok=True)
+os.makedirs(
+    os.path.join(
+        config_obj['project']['temp_data_root'],
+        config_obj['project']['avatar_path']
+    ),
+    exist_ok=True
+)
 
-
-# -------------------------Init File Folder-----------------------
+# -------------------------Init Toolbar-----------------------
 app.config['DEBUG_TB_PROFILER_ENABLED'] = True
 toolbar = DebugToolbarExtension()
 toolbar.init_app(app)

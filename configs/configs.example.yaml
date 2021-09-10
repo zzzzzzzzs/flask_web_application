@@ -6,9 +6,9 @@ project:
   tmp_path: ''
   cloud: 'aliyun'
   project_id: ''
-  temp_data_root: 'D:\project\flask_web_application\temp_data\'
-  avatar_default_url: 'user\avatar\default.jpg'
-  avatar_path: 'user\avatar\'
+  temp_data_root: './temp_data'
+  avatar_default_url: 'user/avatar/default.jpg'
+  avatar_path: 'user/avatar/'
   avatar_width: 300
   avatar_height: 300
   thumbnail_width: 100

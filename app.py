@@ -36,16 +36,6 @@ redis_db.init_app(app)
 # -------------------------Init Login Manager-----------------------
 login_manager.init_app(app)
 
-# -------------------------Init File Folder-----------------------
-os.makedirs(config_obj['logger']['log_dir'], exist_ok=True)
-os.makedirs(
-    os.path.join(
-        config_obj['project']['temp_data_root'],
-        config_obj['project']['avatar_path']
-    ),
-    exist_ok=True
-)
-
 # -------------------------Init Toolbar-----------------------
 app.config['DEBUG_TB_PROFILER_ENABLED'] = True
 toolbar = DebugToolbarExtension()

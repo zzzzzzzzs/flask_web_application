@@ -5,8 +5,7 @@ pipeline {
             agent {
                 docker {
                     args '-p 8888:8888'
-                    image 'python'
-                    label '3.7.11'
+                    image 'python:3.7.11'
                 }
             }
             steps {

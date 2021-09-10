@@ -12,7 +12,7 @@ pipeline {
                 retry(3) {
                     sh 'pip install -r requirements.txt -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com --timeout 60'
                 }
-                sh 'python run.py'
+                sh 'nohup python -u run.py > ./logs/nohup.out 2>&1 &'
             }
         }
     }

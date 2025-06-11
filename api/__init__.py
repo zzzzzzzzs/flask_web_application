@@ -62,5 +62,6 @@ def output_json(data, code, headers=None):
 from api import (
     user,
     role,
-    permission
+    permission,
+    test
 )

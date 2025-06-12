@@ -2,6 +2,9 @@
 """
 启动文件
 """
+from gevent import monkey
+monkey.patch_all()
+
 import os
 from configs import config_obj
 
@@ -17,4 +20,7 @@ if __name__ == '__main__':
     )
 
     from app import app
-    app.run(host=app.host, port=app.port)
+    from gevent.pywsgi import WSGIServer
+
+    http_server = WSGIServer((app.host, app.port), app)
+    http_server.serve_forever()

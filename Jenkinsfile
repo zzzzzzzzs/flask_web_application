@@ -18,7 +18,7 @@ pipeline {
 
         stage("Build") {
             steps {
-                sh "pyenv activate ${params.VENV_NAME}"
+                sh "/root/.pyenv/bin/pyenv activate ${params.VENV_NAME}"
                 sh "pip install -r requirements.txt -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com --timeout 60"
                 echo "pip install done"
             }

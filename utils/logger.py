@@ -5,6 +5,7 @@
     :date created: 2021-06-04
     :python version: 3.5
 """
+import os
 import logging
 from logging import handlers
 from configs import config_obj
@@ -27,6 +28,15 @@ class Logger(object):
 
         self.logger.addHandler(stream_handler)
         self.logger.addHandler(file_handler)
+
+os.makedirs(config_obj['logger']['log_dir'], exist_ok=True)
+os.makedirs(
+    os.path.join(
+        config_obj['project']['temp_data_root'],
+        config_obj['project']['avatar_path']
+    ),
+    exist_ok=True
+)
 
 
 level = logging.DEBUG if bool(config_obj['APP']['DEBUG']) else logging.INFO

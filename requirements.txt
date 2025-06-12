@@ -40,3 +40,4 @@ Pillow==8.3.2
 pytest==7.4.4
 pytest-cov==4.1.0
 exceptiongroup==1.0.4
+pytest-testreport==1.1.6

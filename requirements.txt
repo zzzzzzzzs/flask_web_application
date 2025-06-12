@@ -37,3 +37,5 @@ wrapt==1.12.1
 WTForms==2.3.3
 zipp==3.4.1
 Pillow==8.3.2
+pytest==7.4.4
+pytest-cov==4.1.0
